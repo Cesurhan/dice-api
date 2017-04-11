@@ -1,7 +1,7 @@
 {
   "host": "ShutUp-app.feathersjs.com",
-  "port": 80,
-  "mongodb": "DATABASE_URL",
+  "port": "PORT",
+  "mongodb": "MONGODB_URL",
   "public": "../public/",
   "auth": {
     "token": {
