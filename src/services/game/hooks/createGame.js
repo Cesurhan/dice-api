@@ -12,9 +12,12 @@ module.exports = function(options) {
 
   return function(hook) {
     const currentUser = hook.params.user;
+    const randomNumber = Math.floor(Math.random() * 6 + 1);
 
     hook.data.title = `${currentUser.name}'s Game`;
 
     hook.data.playerIds = [hook.params.user._id];
+
+    hook.data.winningNumber = randomNumber;
   };
 };
