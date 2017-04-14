@@ -9,30 +9,26 @@ const errors = require('feathers-errors');
 
 module.exports = function(options) {
   return function(hook) {
-    console.log("hi")
-    return hook.app.service('games').get(hook.id)
-      .then((game) => {
-        console.log("hoi....")
-
+    return hook.app.service('games').get(hook.id) //hook.id is gameId coming from throwDice.js action
+      .then((game) => { // Game contains all the record for game data game.isWinner is the record...
         if (hook.data.startGame === undefined)
         {
           // throw new errors.Forbidden('You must be the author to change the dice number');
           return
         }
 
-
         const diceThrow = Math.floor(Math.random() * 6) + 1;
+        hook.data.thrownDice = diceThrow;
 
-        console.log("throw is " + diceThrow)
+        const winningNumber = game.winningNumber;
+        const dice = hook.data.thrownDice;
 
-        hook.data.thrownDices = diceThrow;
+        // Check if there is a winner
+        if ( dice === winningNumber )
+        {
+          hook.data.isWinner = true;
+        }
 
-        console.log(hook.data)
-
-        // const action = hook.data.startGame ? '$addToSet' : '$pull';
-        // let data = {};
-        // data[action] = { thrownDices: diceThrow };
-        // hook.data = data;
       })
   }
 }
