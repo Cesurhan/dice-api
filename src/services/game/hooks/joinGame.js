@@ -7,11 +7,14 @@
 
 const errors = require('feathers-errors');
 const isGameFull = require('../isGameFull');
+// const startGame = require('../startGame');
 
 module.exports = function(options) {
   return function(hook) {
     return hook.app.service('games').get(hook.id)
       .then((game) => {
+        if(hook.data.startGame != undefined && hook.data.startGame) return
+
         if (hook.data.joinGame === undefined) {
           throw new errors.Forbidden('You must be the author to change a game like that.');
         }

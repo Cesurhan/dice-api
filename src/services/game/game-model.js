@@ -10,8 +10,8 @@ const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
   title: { type: String, required: true },
-  winningNumber: [],
-  thrownDices: [],
+  winningNumber: { type: Number },
+  thrownDices: { type: Number, 'default': 0 },
   playerIds: [Schema.Types.ObjectId],
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }

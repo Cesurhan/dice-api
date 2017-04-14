@@ -1,5 +1,7 @@
 'use strict';
 
+const startGame = require('./startGame');
+
 const firstEncounter = require('./firstEncounter');
 
 const isGameFull = require('./isGameFull');
@@ -22,7 +24,7 @@ exports.before = {
   get: [],
   create: [createGame()],
   update: [joinGame()],
-  patch: [joinGame()],
+  patch: [joinGame(), startGame()],
   remove: []
 };
 
