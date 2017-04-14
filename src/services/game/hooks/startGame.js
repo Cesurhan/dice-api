@@ -29,7 +29,6 @@ module.exports = function(options) {
         {
           hook.data.isWinner = true;
           hook.data.winnerName = currentUser;
-          console.log('The winner is: ' + currentUser)
         }
 
       })
