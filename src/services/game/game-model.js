@@ -10,6 +10,7 @@ const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
   title: { type: String, required: true },
+  winnerName: { type: String, 'default': null },
   winningNumber: { type: Number },
   thrownDice: { type: Number, 'default': 0 },
   isWinner: { type: Boolean, 'default': false },

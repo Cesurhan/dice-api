@@ -22,11 +22,14 @@ module.exports = function(options) {
 
         const winningNumber = game.winningNumber;
         const dice = hook.data.thrownDice;
+        const currentUser = hook.params.user.name;
 
         // Check if there is a winner
         if ( dice === winningNumber )
         {
           hook.data.isWinner = true;
+          hook.data.winnerName = currentUser;
+          console.log('The winner is: ' + currentUser)
         }
 
       })
