@@ -14,7 +14,6 @@ const gameSchema = new Schema({
   winningNumber: { type: Number },
   thrownDice: { type: Number, 'default': 0 },
   isWinner: { type: Boolean, 'default': false },
-  isNext: { type: Boolean, 'default': null},
   playerIds: [Schema.Types.ObjectId],
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
